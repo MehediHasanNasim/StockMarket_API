@@ -1,0 +1,75 @@
+{% extends 'stocks/base.html' %}
+{% load static %}
+
+
+
+{% block blocktitle %}
+        Stock Portfolio
+{% endblock blocktitle %}
+
+
+{% block homeactive %}
+    active
+{% endblock homeactive %}
+    
+
+    
+{% block bodyblock %} 
+
+
+{% if ticker %}
+    {{ ticker }}
+    
+{% endif %}
+    
+
+
+{% if api %}
+    
+    {% if api == "Error..." %}  
+        <p class="text-light">there is a problem with your ticker symbol.
+            please try again....</p>
+    {% else %}
+        <h1 class="text-light">{{ api.companyName }}</h1><br>
+        <li class="text-light">Price: ${{ api.latestPrice }}</li> 
+        <li class="text-light">Previous Close: {{ api.previousClose }} </li>
+        <li class="text-light">Market Cap: {{ api.marketCap }}</li>
+        <li class="text-light">Ytd Change: {{ api.ytdChange }} </li>
+        <li class="text-light">52wk High: {{ api.week52High }}</li> 
+        <li class="text-light">52wk Low: {{ api.week52Low }} </li>
+        <li class="text-light">Extended Change: {{ api.extendedChange }} </li>
+        
+
+            
+        
+     
+   
+    {% endif %}
+        
+   
+    
+{% endif %}
+   <p class="text-light">{{ ticker }}</p><br>
+
+   <div>
+       <p class="text-warning">You can try on this for checking purpose</p>
+       <li class="text-light">aapl -(apple)</li>
+       <li class="text-light">goog -(google)</li>
+       <li class="text-light">ig -instagram)</li>
+       <li class="text-light">tw -(twitter)</li>
+       <li class="text-light">amzn -(amazon)</li><br><br>
+   </div>
+    
+
+
+{% endblock bodyblock %}
+
+
+{% block extrajs %}
+<script>
+    $(document).ready(function () {
+      window.history.replaceState('', '', window.location.href);
+    });
+  </script>
+{% endblock extrajs %}
+

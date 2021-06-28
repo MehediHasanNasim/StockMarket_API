@@ -1,0 +1,39 @@
+{% extends 'stocks/base.html' %}
+
+{% block blocktitle %}
+        delete
+{% endblock blocktitle %}
+
+
+{% block deleteactive %}
+    active
+{% endblock deleteactive %}
+
+    
+{% block bodyblock %}
+
+<h1 class="text-light">Deleting</h1> <br> 
+
+
+
+
+{% if ticker %}
+    
+    {% for item in ticker %}
+        <li class="text-light">
+            <a href="{% url 'delete' item.id %}" class="btn btn-danger">Delete -{{ item }}</a></li> <br>
+    {% endfor %}
+{% else %}
+             you don't have any stocks..
+
+{% endif %}
+
+
+
+
+
+        
+{% endblock bodyblock %}
+
+{% block extrajs %}
+{% endblock extrajs %}
